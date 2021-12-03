@@ -9,7 +9,7 @@ setup(
     description="An unofficial wrapper for Engineer Man's Piston API",
     long_description=long_desc,
     long_description_content_type="text/markdown",
-    package_dir={"piston.py": "src"}
+    package_dir={"piston.py": "src"},
     author="AalbatrossGuy",
     author_email="thexcelsiorisback@gmail.com",
     url="https://github.com/AaalbatrossGuy/piston.py",
