@@ -1,17 +1,21 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-with open("README.md") as file:
+with open("README.md", mode="r", encoding="utf-8") as file:
     long_desc = file.read()
 
 setup(
-    name="piston.py",
+    name="pistonpy",
     version="0.0.1",
     description="An unofficial wrapper for Engineer Man's Piston API",
     long_description=long_desc,
     long_description_content_type="text/markdown",
-    package_dir={"piston.py": "src"},
+    python_requires = ">=3.8",
+    package_dir={
+        "pistonpy": "src/pistonpy",
+    },
+    packages=['pistonpy'],
     author="AalbatrossGuy",
     author_email="thexcelsiorisback@gmail.com",
-    url="https://github.com/AaalbatrossGuy/piston.py",
-    install_requires=["requests"]
+    url="https://github.com/AaalbatrossGuy/pistonpy",
+    install_requires=["requests",]
 )
