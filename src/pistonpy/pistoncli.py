@@ -6,17 +6,18 @@ import requests
 __all__ = ('PistonCli',)
 
 class PistonCli():
-    """The base initialization client. An instance of it must be defined to work with this class."""
+    """The class to use while working with command line programs."""
 
     def __init__(self, embed: str = 'app') -> None:
         """
         :param embed: cli - work as command-line argument.
-        :param embed: app - work as integrated.
-            Default is set to app
-        :private endpoint: the base url. Do not change.
+            Default is set to cli
         """
         self.embed = embed
         self._endpoint = "https://emkc.org/api/v2/piston"
+
+    def __repr__(self) -> str:
+        return "<pistonpy.PistonCli>"
 
     @property
     def runtimes(self) -> dict:
