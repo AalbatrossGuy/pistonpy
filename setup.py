@@ -17,5 +17,5 @@ setup(
     author="AalbatrossGuy",
     author_email="thexcelsiorisback@gmail.com",
     url="https://github.com/AaalbatrossGuy/pistonpy",
-    install_requires=["requests",]
+    install_requires=["requests", "typing"]
 )
