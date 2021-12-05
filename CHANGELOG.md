@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Command Line Interface Functionality
 - Add more safety checks
 
-## [0.0.2] - 2021-12-04
+## [v0.0.2] - 2021-12-04
 ### Added
 - `examples` folder
 - Add `models` for improved code functionality
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - None
 
-## [0.0.1] - 2021-12-03
+## v0.0.1 - 2021-12-03
 The First Release!
 ### Added
 - Base directory structuring
@@ -27,3 +27,4 @@ The First Release!
 - Basic functioning of `PistonApp` model
 
 [Unreleased]: https://github.com/AalbatrossGuy/pistonpy
+[v0.0.2]: https://github.com/AalbatrossGuy/pistonpy/releases/tag/v0.0.2
