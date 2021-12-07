@@ -17,3 +17,6 @@ class NotAFile(Exception):
 
 class PistonError(Exception):
     pass
+
+class MultipleLanguagesFound(Exception):
+    pass
