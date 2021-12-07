@@ -38,3 +38,4 @@ The First Release!
 
 [Unreleased]: https://github.com/AalbatrossGuy/pistonpy
 [v0.0.2]: https://github.com/AalbatrossGuy/pistonpy/releases/tag/v0.0.2
+[v0.0.3]: https://github.com/AalbatrossGuy/pistonpy/releases/tag/v0.0.3
