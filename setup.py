@@ -17,5 +17,12 @@ setup(
     author="AalbatrossGuy",
     author_email="thexcelsiorisback@gmail.com",
     url="https://github.com/AaalbatrossGuy/pistonpy",
-    install_requires=["requests", "typing"]
+    install_requires=["requests", "typing"],
+    keywords=['python', 'api-wrapper', 'piston', 'piston.py', 'code execution', 'run-code'],
+    classifiers=[
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Intended Audience :: Developers',
+    ]
 )
