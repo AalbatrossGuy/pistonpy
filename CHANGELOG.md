@@ -10,11 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Command Line Interface Functionality
 - Add more safety checks
 
+## [v0.0.3] - 2021-12-07
+### Added
+-  Add `<PistonApp>.languages` property
+-  Add `<PistonApp>.aliases` property
+-  Add `<PistonApp>.raw` property
+-  Running of multiple files (python ONLY) now supported.
+> Running of multiple files for other languages will be supported soon...
+### Changed
+-   Splitted `<PistonApp>.languages` property into three other parts for greater control over data.
+
 ## [v0.0.2] - 2021-12-04
 ### Added
-- `examples` folder
-- Add `models` for improved code functionality
-- Add `run` function to actually run the code
+-  `examples` folder
+-  Add `models` for improved code functionality
+-  Add `run` function to actually run the code
 ### Changed
 - None
 
