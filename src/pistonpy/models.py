@@ -3,8 +3,10 @@
 # !/usr/bin/env python3
 import requests, json
 from .exceptions import PistonError
+from .extensions import lang_extensions as le
 
-__all__  = ("GetOutput",)
+__all__  = ("GetOutput", "Extensions",)
+
 
 class GetOutput:
     def __init__(self, payload: dict) -> None:
@@ -19,3 +21,14 @@ class GetOutput:
             raise PistonError(output.get('message'))
         else:
             return output
+
+
+class Extensions:
+    def __init__(self, language: str, payload: list) -> None:
+        self.payload = payload
+        self.language = language
+
+    @property
+    def check_files(self):
+        #file_extensions = [i.split('.')[1] for i in files]
+        pass
