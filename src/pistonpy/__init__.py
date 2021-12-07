@@ -10,7 +10,7 @@ __author__  = "AalbatrossGuy"
 __license__ = "MIT"
 __copyright__ = "Copyright (c) 2021 AalbatrossGuy"
 
-__all__ = ('PistonCli', 'PistonApp')
+__all__ = ('PistonCli', 'PistonApp', 'GetOutput', 'CodeNotFound', 'LanguageNotFound', 'CodeFormatNotFound', 'NotAFile', 'PistonError',)
 __path__ = __import__('pkgutil').extend_path(__path__, __name__)
 
 
