@@ -2,7 +2,7 @@
 # !python
 # !/usr/bin/env python3
 import requests, json
-from .exceptions import PistonError
+from .exceptions import PistonError, MultipleLanguagesFound
 from .extensions import lang_extensions as le
 
 __all__  = ("GetOutput", "Extensions",)
@@ -30,5 +30,12 @@ class Extensions:
 
     @property
     def check_files(self):
-        #file_extensions = [i.split('.')[1] for i in files]
-        pass
+        check_bool = []
+        file_extensions = [i.split('.')[1] for i in self.payload]
+        for file in file_extensions:
+            check_bool.append(True) if file in le[self.language] and file == le[self.language] else check_bool.append(False)
+        #print(check_bool)
+        if all(check_bool):
+            return True, None
+        else:
+            return False, file_extensions
