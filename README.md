@@ -1,6 +1,6 @@
 <h1 align="center">Pistonpy</h1>
 <p align="center">
-    <a href="https://pypi.org/project/pistonpy/0.0.2/">
+    <a href="https://pypi.org/project/pistonpy/0.0.3/">
         <img src="https://img.shields.io/pypi/v/pistonpy.svg?style=for-the-badge&color=orange&logo=&logoColor=white" />
     </a>
     <a href="https://github.com/AalbatrossGuy/pistonpy/commits/v0.0.2">
