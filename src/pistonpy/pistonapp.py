@@ -3,8 +3,8 @@
 # !/usr/bin/env python3
 import requests, json
 from typing import Optional
-from .exceptions import CodeNotFound, LanguageNotFound, CodeFormatNotFound, NotAFile
-from .models import GetOutput
+from .exceptions import CodeNotFound, LanguageNotFound, CodeFormatNotFound, NotAFile, MultipleLanguagesFound
+from .models import GetOutput, Extensions
 
 __all__ = ('PistonApp',)
 
@@ -23,22 +23,42 @@ class PistonApp():
         return "<pistonpy.PistonApp>"
 
     @property
-    def runtimes(self) -> dict:
+    def raw(self) -> dict:
         url = self._endpoint + "/runtimes"
         response = requests.request("GET", url)
         data = response.json()
-        return { item.pop("language"): item for item in data }
+        return data
 
 
     @property
-    def languages(self) -> list:
+    def languages(self) -> dict:
         url = self._endpoint + "/runtimes"
         response = requests.request("GET", url)
         data = response.json()
-        lang = []
-        for language in data:
-            lang.append(language['language'])
-        return lang
+        language = []
+        version = []
+
+        for i in data:
+            language.append(i['language'])
+            version.append(i['version'])
+
+        dic = dict(zip(language, version))
+        return dic
+
+    @property
+    def aliases(self) -> dict:
+        url = self._endpoint + "/runtimes"
+        response = requests.request("GET", url)
+        data = response.json()
+        language = []
+        alias = []
+
+        for i in data:
+            language.append(i['language'])
+            alias.append(i['aliases'])
+
+        dic = dict(zip(language, alias))
+        return dic
 
     def run(
         self,
@@ -53,10 +73,15 @@ class PistonApp():
         compile_memory_limit: Optional[int] = -1,
         run_memory_limit: Optional[int] = -1,
     ) -> list:
-
-
         """Main Code Execution"""
         main_code = ''
+        bool, message = Extensions(language=language, payload=files).check_files
+        if files:
+            if bool:
+                pass
+            else:
+                raise MultipleLanguagesFound(f"Files of multiple languages found: {message}")
+
         if not code and not files:
             print('running CodeNotFound')
             raise CodeNotFound("No code provided to run")
@@ -70,7 +95,7 @@ class PistonApp():
 
                 main_code = [{"name" : '', "content" : code}]
 
-            if files:
+            if files and len(files) == 1:
                 files_content = []
 
                 for file in files:
@@ -79,9 +104,24 @@ class PistonApp():
                             content = f.read()
                             files_content.append({"name": file, "content": content})
                     except FileNotFoundError:
-                        raise NotAFile(f"{file} is not a file object.")
+                        raise FileNotFoundError(f"{file} not found.")
                 main_code = files_content
 
+            if files and len(files) > 1:
+                formattedfiles = [i.split('.')[0] for i in files]
+                files_content = []
+
+                for file in files:
+                    files_content.append({"name" : "main.py", "content" : f"import {', '.join(formattedfiles)}"})
+                    try:
+                        with open(file, mode="r") as f:
+                            content = f.read()
+                            files_content.append({"name" : file, "content" : content})
+                    except FileNotFoundError:
+                        raise FileNotFoundError(f"{file} not found.")
+
+                main_code = files_content
+                # print(f"main_code = {main_code}")
 
         payload = {
             'language' : language,
