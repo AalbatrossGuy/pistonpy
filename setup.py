@@ -5,7 +5,7 @@ with open("README.md", mode="r", encoding="utf-8") as file:
 
 setup(
     name="pistonpy",
-    version="0.0.2",
+    version="0.0.3",
     description="An unofficial wrapper for Engineer Man's Piston API",
     long_description=long_desc,
     long_description_content_type="text/markdown",
