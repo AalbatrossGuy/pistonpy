@@ -74,8 +74,12 @@ class PistonApp():
         run_memory_limit: Optional[int] = -1,
     ) -> list:
         """Main Code Execution"""
+
         main_code = ''
+        formattedfiles = [i.split('.')[0] for i in files]
+        file_extensions = [i.split('.')[1] for i in files]
         bool, message = Extensions(language=language, payload=files).check_files
+
         if files:
             if bool:
                 pass
@@ -107,8 +111,7 @@ class PistonApp():
                         raise FileNotFoundError(f"{file} not found.")
                 main_code = files_content
 
-            if files and len(files) > 1:
-                formattedfiles = [i.split('.')[0] for i in files]
+            if files and 1 < len(files) < 5 and 'py' in file_extensions:
                 files_content = []
 
                 for file in files:
@@ -122,6 +125,36 @@ class PistonApp():
 
                 main_code = files_content
                 # print(f"main_code = {main_code}")
+
+            if files and 1 < len(files) <= 5:
+                files_content = []
+                response = []
+
+                for file in files:
+                    try:
+                        with open(file, mode="r") as f:
+                            content = f.read()
+                            files_content.append({"name" : file, "content" : content})
+                    except FileNotFoundError:
+                        raise FileNotFoundError(f"{file} not found.")
+
+                for data in files_content:
+                    temp = []
+                    temp.append(json.dumps(data))
+                    multiple_files = {
+                        'language' : language,
+                        'version' : version,
+                        'files' : json.dumps(temp),
+                        'args' : args,
+                        'stdin' : input,
+                        'compile_timeout' : compile_timeout,
+                        'run_timeout' : run_timeout,
+                        'compile_memory_limit' : compile_memory_limit,
+                        'run_memory_limit' : run_memory_limit
+                    }
+                    print(f"Multiple Files - {multiple_files}")
+                    response.append(GetOutput(multiple_files).parse_output())
+                return response
 
         payload = {
             'language' : language,
