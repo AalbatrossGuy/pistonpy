@@ -10,7 +10,7 @@
     <a href="https://app.codacy.com/gh/AalbatrossGuy/pistonpy/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AalbatrossGuy/pistonpy&amp;utm_campaign=Badge_Grade">
         <img src="https://img.shields.io/codacy/grade/d54121e3fbc94d4195d9c9e3791fbe47?style=for-the-badge" />
     </a>
-    <br> Pistonpy is an API wrapper for the Piston code execution engine by Engineer Man.
+    <br> ⚠️DEPRECATED⚠️<br> Pistonpy is an API wrapper for the Piston code execution engine by Engineer Man.
 </p>
 
 ## Key Features
